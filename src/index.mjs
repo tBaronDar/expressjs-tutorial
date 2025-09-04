@@ -19,7 +19,11 @@ app.listen(PORT, () => {
 // The request object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
 // The response object represents the HTTP response that an Express app sends when it gets an HTTP request.
 app.get("/", (req, res) => {
-	res.send("Hello World");
+	res.send("Γαμώ τα σοφτ σκιλς!");
+});
+
+app.get("/alex-kane-react", (req, res) => {
+	res.send("Γαμώ τα σοφτ σκιλς!, Alex Kane React, zito o mastoras!");
 });
 
 //an other example
