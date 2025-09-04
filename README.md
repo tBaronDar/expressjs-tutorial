@@ -32,7 +32,26 @@ node --watch server.js
 
 It does the same thing but nodemon can be customizised
 
-### Deploying on Vercel
+### Route parameters and Query parameters
 
-✅ At this point you have an Express.js app running on Vercel.
-The main difference from a normal server: you don’t call app.listen(). Vercel handles that by turning your app into a serverless function.
+Both "live" inside the route.
+
+- Route params:
+  *www.test.gr/products/onsale/:id*
+  To extract that in code, we need to access the req object:
+
+```js
+app.get("/api/users/:id", (req, res) => {
+	const userId = parseInt(req.params.id, -1);
+    ...
+```
+
+- Query params:
+
+  We can have one:
+
+  *www.test.gr/users?id=1*
+
+  Or multiple:
+
+  *www.test.gr/users?id=1&sorted=true*
