@@ -7,6 +7,12 @@ const app = express();
 const PORT = env.PORT || 3000;
 console.log(env.PORT);
 
+const mockUsers = [
+	{ id: 1, name: "John" },
+	{ id: 2, name: "Jane" },
+	{ id: 3, name: "Jim" },
+];
+
 // Listen on selected port
 // the second argument is a callback function that is called when the server has started
 app.listen(PORT, () => {
@@ -29,9 +35,22 @@ app.get("/alex-kane-react", (req, res) => {
 //an other example
 //manually set the status code to 200
 app.get("/api/users", (req, res) => {
-	res.status(200).send([
-		{ id: 1, name: "John" },
-		{ id: 2, name: "Jane" },
-		{ id: 3, name: "Jim" },
-	]);
+	res.status(200).send(mockUsers);
+});
+
+//Route with a parameter
+app.get("/api/users/:id", (req, res) => {
+	console.log(req.params);
+	const userId = parseInt(req.params.id, -1); //if parseInt fails it returns -1
+	//alt way to check if it's a number isNaN(userId)
+	if (userId === -1) {
+		res.status(400).send({ message: "Invalid user id" });
+		return;
+	}
+	const user = mockUsers.find((u) => u.id === userId);
+	if (user) {
+		res.status(200).send(user);
+	} else {
+		res.status(404).send({ message: "User not found" });
+	}
 });
