@@ -19,15 +19,24 @@ npm i express
 ```
 
 To run the server on watch mode:
+**Don't use this**
 
 ```bash
 npm i -D nodemon
 ```
 
 "-D" means "developer dependency". Also we can use:
+**Don't use this**
 
 ```bash
 node --watch server.js
+```
+
+If add the start:dev script in the package.json:
+**Use this**
+
+```bash
+npm run start:dev
 ```
 
 It does the same thing but nodemon can be customizised

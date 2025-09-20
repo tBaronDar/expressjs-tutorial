@@ -91,3 +91,5 @@ app.get("/api/users", (req, res) => {
 		res.status(200).send(mockUsers);
 	}
 });
+
+//POST request example
