@@ -64,3 +64,20 @@ app.get("/api/users/:id", (req, res) => {
   Or multiple:
 
   *www.test.gr/users?id=1&sorted=true*
+
+### On Pg
+
+Best practices:
+
+- Use environment variables for database credentials
+- Use connection pooling (as shown in the example with Pool)
+- Always handle database errors properly
+- Use parameterized queries to prevent SQL injection
+- Close the pool when shutting down your application:
+
+```javascript
+process.on("SIGINT", async () => {
+	await pool.end();
+	process.exit(0);
+});
+```
